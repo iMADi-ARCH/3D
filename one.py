@@ -5,31 +5,6 @@ from pygame import Vector3
 from OpenGL.GL import *
 from OpenGL.GLU import *
 
-vertices = (
-    (1, -1, -1), # A
-    (1, 1, -1),
-    (-1, 1, -1),
-    (-1, -1, -1),
-    (1, -1, 1),
-    (1, 1, 1),
-    (-1, -1, 1),
-    (-1, 1, 1),
-)
-
-edges = (
-    (0, 1),
-    (0, 3),
-    (0, 4),
-    (2, 1),
-    (2, 3),
-    (2, 7),
-    (6, 3),
-    (6, 4),
-    (6, 7),
-    (5, 1),
-    (5, 4),
-    (5, 7)
-)
 
 class Cube:
     def __init__(self, pos, size):
@@ -87,9 +62,23 @@ class FPPCamera:
         self.rot_velocity = Vector3(0, 0, 0)
     
     def update(self):
-        self.pos += self.velocity
+        # self.pos += self.velocity
 
-        self.rot += self.rot_velocity
+        # self.rot += self.rot_velocity
+
+        if self.velocity.x != 0:
+            self.pos.x += self.velocity.x
+        if self.velocity.y != 0:
+            self.pos.y += self.velocity.y
+        if self.velocity.z != 0:
+            self.pos.z += self.velocity.z
+        
+        if self.rot_velocity.x != 0:
+            self.rot.x += self.rot_velocity.x
+        if self.rot_velocity.y != 0:
+            self.rot.y += self.rot_velocity.y
+        if self.rot_velocity.z != 0:
+            self.rot.z += self.rot_velocity.z
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
         glTranslatef(self.pos.x, self.pos.y, self.pos.z)
