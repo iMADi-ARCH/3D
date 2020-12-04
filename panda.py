@@ -27,7 +27,7 @@ class MyApp(ShowBase):
             startPos=Point3(0, 10, 0)       ## Start Pos
         )
         posInterval2 = self.panda.posInterval(
-            13, 
+            13,  
             Point3(0, 10, 0), 
             startPos=Point3(0, -10, 0)
         )
